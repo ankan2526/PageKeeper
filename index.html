@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PageKeeper</title>
+    <link rel="icon" type="image/png" href="assets/pagekeeper-logo.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main>
+      <section id="upload-panel" class="panel" aria-labelledby="upload-heading">
+        <div class="upload-icon" aria-hidden="true">↗</div>
+        <h2 id="upload-heading">A little space for your next chapter.</h2>
+        <p>Choose a PDF to save it in this browser. Your book and bookmark stay on this device.</p>
+        <label class="file-picker upload-picker">
+          Open a PDF
+          <input id="pdf-upload" class="visually-hidden" type="file" accept="application/pdf,.pdf">
+        </label>
+      </section>
+
+      <section id="reader-panel" class="panel" aria-label="PDF reader" hidden>
+        <div class="reader-toolbar">
+          <a class="brand" href="#" aria-label="PageKeeper home">
+            <img class="brand-mark" src="assets/pagekeeper-logo.png" alt="">
+            <span>
+              <h1>PageKeeper</h1>
+              <span class="tagline">Your books, always within reach.</span>
+            </span>
+          </a>
+          <div class="navigation-controls">
+            <button id="previous-page" class="icon-button" type="button" aria-label="Previous page" title="Previous page">←</button>
+            <span id="page-status" class="page-status" aria-live="polite">Page 0 of 0</span>
+            <button id="next-page" class="icon-button" type="button" aria-label="Next page" title="Next page">→</button>
+          </div>
+          <div class="reader-actions">
+            <button id="toggle-spread" class="toolbar-button" type="button" aria-pressed="false">Two-page view</button>
+            <button id="bookmark-page" class="toolbar-button" type="button">Bookmark page</button>
+            <button id="go-to-bookmark" class="toolbar-button" type="button">Go to bookmark</button>
+            <button id="toggle-fullscreen" class="toolbar-button fullscreen-button" type="button" aria-pressed="false">Enter fullscreen</button>
+            <label class="file-picker compact-picker">
+              Open another
+              <input id="replace-pdf" class="visually-hidden" type="file" accept="application/pdf,.pdf">
+            </label>
+          </div>
+        </div>
+        <div class="canvas-wrap">
+          <div id="pages-container" class="pages-container">
+            <div id="primary-frame" class="page-frame">
+              <canvas id="primary-canvas" class="page-canvas" aria-label="Current PDF page"></canvas>
+              <div class="bookmark-ribbon" hidden aria-label="Bookmarked page" title="Bookmarked page">
+                <span aria-hidden="true">★</span>
+                <span class="ribbon-label">Saved</span>
+              </div>
+            </div>
+            <div id="secondary-frame" class="page-frame" hidden>
+              <canvas id="secondary-canvas" class="page-canvas" aria-label="Next PDF page"></canvas>
+              <div class="bookmark-ribbon" hidden aria-label="Bookmarked page" title="Bookmarked page">
+                <span aria-hidden="true">★</span>
+                <span class="ribbon-label">Saved</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <p id="message" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
